@@ -24,16 +24,16 @@
       --font-b: 'Outfit', sans-serif;
     }
 
-    /* ── BROWN LIGHT MODE COMBINATION ── */
+    /* ── BROWN LIGHT MODE FIX ── */
     [data-theme="light"] {
-      --bg: #FCF8F5; /* Light Creamy Brown */
-      --surface: #F3EBE3; /* Soft Sand Brown */
-      --card: #EADED3; /* Muted Earth Brown */
+      --bg: #FCF8F5; 
+      --surface: #F3EBE3; 
+      --card: #EADED3; 
       --border: rgba(94, 66, 47, 0.15);
-      --text: #4A3728; /* Deep Coffee Brown */
-      --muted: #8B7361; /* Taupe Brown */
-      --a1: #8B5E3C; /* Rich Bronze */
-      --a4: #A67B5B; /* Tan */
+      --text: #4A3728; 
+      --muted: #8B7361; 
+      --a1: #8B5E3C; 
+      --a4: #A67B5B; 
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -43,96 +43,49 @@
     /* ── CURSOR ── */
     .cur { position: fixed; width: 8px; height: 8px; background: var(--a1); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: transform 0.15s; }
     .cur-f { position: fixed; width: 32px; height: 32px; border: 1.5px solid var(--a1); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: width 0.2s, height 0.2s, border-color 0.2s; opacity: 0.6; }
-    body:has(a:hover) .cur-f, body:has(button:hover) .cur-f { width: 50px; height: 50px; border-color: var(--a2); }
 
     /* ── NOISE ── */
     body::after { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E"); pointer-events:none; z-index:999; }
 
     /* ── NAV ── */
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 6%; backdrop-filter: blur(24px); background: rgba(6,6,8,0.75); border-bottom: 1px solid var(--border); transition: background 0.4s; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 6%; backdrop-filter: blur(24px); background: rgba(6,6,8,0.75); border-bottom: 1px solid var(--border); }
     [data-theme="light"] nav { background: rgba(252, 248, 245, 0.85); }
-    .nav-logo { font-family: var(--font-h); font-weight: 800; font-size: 1.4rem; letter-spacing: -0.04em; background: linear-gradient(135deg, var(--a1), var(--a4)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
-    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--text); }
-    .theme-btn { background: var(--card); border: 1px solid var(--border); color: var(--muted); padding: 0.45rem 1rem; border-radius: 100px; font-size: 0.78rem; cursor: pointer; font-family: var(--font-b); transition: all 0.2s; }
-    .theme-btn:hover { border-color: var(--a1); color: var(--text); }
+    .nav-logo { font-family: var(--font-h); font-weight: 800; font-size: 1.4rem; background: linear-gradient(135deg, var(--a1), var(--a4)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; font-weight: 500; text-transform: uppercase; transition: color 0.2s; }
+    .theme-btn { background: var(--card); border: 1px solid var(--border); color: var(--muted); padding: 0.45rem 1rem; border-radius: 100px; cursor: pointer; }
 
     /* ── HERO ── */
     .hero { min-height: 100vh; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center; padding: 9rem 6% 4rem; position: relative; overflow: hidden; }
-
-    /* blobs */
-    .blob { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; animation: blobFloat 10s ease-in-out infinite; }
-    .blob1 { width: 500px; height: 500px; background: rgba(0,212,170,0.07); top: -10%; left: -5%; }
-    .blob2 { width: 400px; height: 400px; background: rgba(255,95,126,0.06); bottom: 0; right: -5%; }
-    @keyframes blobFloat { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(30px,-20px) scale(1.05)} 66%{transform:translate(-20px,30px) scale(0.95)} }
-
     .hero-grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 70px 70px; mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black, transparent); }
-
-    .hero-left { position: relative; z-index: 1; }
-    .hero-badge { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.4rem 1rem; background: rgba(0,212,170,0.08); border: 1px solid rgba(0,212,170,0.2); border-radius: 100px; font-size: 0.78rem; color: var(--a1); font-weight: 600; margin-bottom: 1.8rem; animation: fadeUp 0.7s ease both; }
-    .dot-live { width: 7px; height: 7px; background: var(--a1); border-radius: 50%; animation: livePulse 1.8s infinite; }
-    @keyframes livePulse { 0%,100%{box-shadow:0 0 0 0 rgba(0,212,170,0.5)} 50%{box-shadow:0 0 0 6px rgba(0,212,170,0)} }
-
-    h1.hero-name { font-family: var(--font-h); font-size: clamp(3.2rem, 7.5vw, 6rem); font-weight: 800; line-height: 0.95; letter-spacing: -0.04em; animation: fadeUp 0.7s 0.1s ease both; }
+    
+    h1.hero-name { font-family: var(--font-h); font-size: clamp(3.2rem, 7.5vw, 6rem); font-weight: 800; line-height: 0.95; }
     .hero-name .outline { -webkit-text-stroke: 1.5px var(--a1); color: transparent; }
-
-    .typewriter-wrap { margin-top: 1.2rem; font-size: 1.15rem; color: var(--muted); font-weight: 400; min-height: 2rem; animation: fadeUp 0.7s 0.2s ease both; }
+    .typewriter-wrap { margin-top: 1.2rem; font-size: 1.15rem; color: var(--muted); min-height: 2rem; }
     .typewriter-wrap span { color: var(--a1); font-weight: 600; }
-    .cursor-blink { display: inline-block; width: 2px; height: 1.1em; background: var(--a1); margin-left: 2px; vertical-align: middle; animation: blink 1s step-end infinite; }
-
-    .hero-desc { margin-top: 1.2rem; color: var(--muted); font-size: 1rem; line-height: 1.85; max-width: 460px; animation: fadeUp 0.7s 0.3s ease both; }
-    .hero-cta { display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; animation: fadeUp 0.7s 0.4s ease both; }
-    .btn-main { padding: 0.85rem 2rem; background: var(--a1); color: #fff; border-radius: 10px; font-weight: 700; font-size: 0.9rem; text-decoration: none; transition: transform 0.2s; box-shadow: 0 0 25px rgba(0,212,170,0.3); }
-    .btn-ghost { padding: 0.85rem 2rem; border: 1px solid var(--border); color: var(--text); border-radius: 10px; font-weight: 500; font-size: 0.9rem; text-decoration: none; transition: all 0.2s; background: rgba(255,255,255,0.03); }
-
-    /* ── ROUND PFP STYLE ── */
-    .hero-right { position: relative; z-index: 1; display: flex; justify-content: center; animation: fadeUp 0.7s 0.3s ease both; }
-    .profile-wrap { position: relative; width: 320px; height: 320px; }
+    
+    /* ── CIRCULAR PFP FIX ── */
+    .hero-right { display: flex; justify-content: center; position: relative; z-index: 1; }
+    .profile-wrap { position: relative; width: 340px; height: 340px; }
     .profile-img { 
       width: 100%; height: 100%; 
-      border-radius: 50% !important; /* Forces Circular Shape */
+      border-radius: 50% !important; 
       object-fit: cover; 
       border: 8px solid var(--surface); 
-      box-shadow: 0 20px 50px rgba(0,0,0,0.3); 
+      box-shadow: 0 30px 60px rgba(0,0,0,0.4); 
     }
-    .profile-badge { position: absolute; bottom: 10px; left: -10px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 0.8rem 1.2rem; backdrop-filter: blur(10px); }
-    .profile-badge .num { font-size: 1.5rem; font-weight: 800; color: var(--a1); }
-    
-    @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+    .profile-badge { position: absolute; bottom: 10px; left: -10px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1rem; }
 
-    /* ── REST OF SECTIONS ── */
+    /* ── REVEAL ── */
     section { padding: 6rem 6%; }
-    .sec-label { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--a1); font-weight: 700; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem; }
-    .sec-label::after { content:''; width: 30px; height: 1px; background: var(--a1); opacity: 0.5; }
-    .sec-title { font-family: var(--font-h); font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 700; line-height: 1.2; margin-bottom: 2.5rem; }
-
-    #about { background: var(--surface); }
-    .about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; }
-    .about-text p { color: var(--muted); line-height: 1.9; margin-bottom: 1.1rem; }
-    .highlight-item { display: flex; align-items: flex-start; gap: 1rem; padding: 1.2rem; background: var(--card); border: 1px solid var(--border); border-radius: 14px; margin-bottom: 1rem; }
-
-    .skills-cats { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
-    .skill-cat { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 1.8rem; }
-    .skill-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .skill-pill { padding: 0.3rem 0.85rem; border-radius: 100px; font-size: 0.78rem; border: 1px solid var(--border); }
-
-    .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
-    .project-card { background: var(--card); border: 1px solid var(--border); border-radius: 22px; overflow: hidden; }
-    .project-thumb { height: 160px; background: var(--surface); display: flex; align-items: center; justify-content: center; font-size: 3rem; }
-    .project-body { padding: 1.5rem; }
-
-    .contact-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 4rem; }
-    .form-box { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 2.2rem; }
-    .fg { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
-    .fg input, .fg textarea { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 0.85rem 1rem; color: var(--text); outline: none; }
-    .btn-send { width: 100%; padding: 1rem; background: var(--a1); color: #fff; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; }
-
-    footer { padding: 2.5rem 6%; border-top: 1px solid var(--border); text-align: center; }
     .reveal { opacity: 0; transform: translateY(28px); transition: 0.7s ease; }
     .reveal.active { opacity: 1; transform: translateY(0); }
+    .sec-title { font-family: var(--font-h); font-size: clamp(1.8rem, 3.5vw, 2.8rem); margin-bottom: 2rem; }
 
-    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; text-align: center; } .hero-right { display: none; } .cur, .cur-f { display: none; } body { cursor: auto; } }
+    /* ── BUTTONS ── */
+    .btn-main { padding: 0.85rem 2rem; background: var(--a1); color: #000; border-radius: 10px; text-decoration: none; font-weight: 700; display: inline-block; }
+
+    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; text-align: center; } .hero-right { display: none; } }
   </style>
 </head>
 <body data-theme="dark">
@@ -152,78 +105,83 @@
 </nav>
 
 <section class="hero" id="home">
-  <div class="blob blob1"></div>
-  <div class="blob blob2"></div>
   <div class="hero-grid-bg"></div>
   <div class="hero-left">
-    <div class="hero-badge"><div class="dot-live"></div> Available for freelance</div>
+    <div style="color:var(--a1); font-weight:600; margin-bottom:1rem;">Available for freelance</div>
     <h1 class="hero-name">Aryan<br><span class="outline">Kumar.</span></h1>
     <div class="typewriter-wrap">I build <span id="typed"></span><span class="cursor-blink">|</span></div>
-    <p class="hero-desc">A self-taught <strong>Web Developer & UI/UX Designer</strong> from Delhi crafting digital experiences.</p>
-    <div class="hero-cta">
+    <p style="margin-top:1.5rem; color:var(--muted); line-height:1.8; max-width:480px;">
+      A <strong>self-taught Web Developer & UI/UX Designer</strong> from Delhi, passionate about crafting digital experiences that are both beautiful and functional.
+    </p>
+    <div style="margin-top:2rem;">
       <a href="#projects" class="btn-main">See My Work →</a>
-      <a href="#contact" class="btn-ghost">Let's Talk</a>
     </div>
   </div>
   <div class="hero-right">
     <div class="profile-wrap">
-      <img src="https://i.pinimg.com/736x/d5/7b/62/d57b62326ef93fe64555ca7e015c98dc.jpg" class="profile-img" alt="Aryan PFP"/>
-      <div class="profile-badge"><div class="num">3+</div><div class="lbl">Projects</div></div>
+      <img src="https://i.pinimg.com/736x/d5/7b/62/d57b62326ef93fe64555ca7e015c98dc.jpg" class="profile-img" alt="Aryan Kumar"/>
+      <div class="profile-badge">
+        <div style="font-size:1.5rem; font-weight:800; color:var(--a1);">3+</div>
+        <div style="font-size:0.7rem; color:var(--muted);">Live Projects</div>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="about">
-  <div class="sec-label">About Me</div>
-  <div class="about-grid">
-    <div class="about-text reveal">
-      <h2 class="sec-title">Passionate about<br>pixels & clean code.</h2>
-      <p>I'm <strong>Aryan Kumar</strong>, based in Narela, Delhi. I build responsive, visually stunning websites.</p>
-    </div>
-    <div class="about-highlights reveal">
-      <div class="highlight-item">🎯 <div><strong>Goal-Oriented</strong><p>Focus on results that matter.</p></div></div>
-      <div class="highlight-item">⚡ <div><strong>Fast Learner</strong><p>Self-taught from scratch.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<section id="skills" style="background: var(--surface);">
-  <div class="sec-label">Skills</div>
-  <h2 class="sec-title reveal">What I bring.</h2>
-  <div class="skills-cats">
-    <div class="skill-cat reveal">🎨 UI/UX Design<div class="skill-pills"><span class="skill-pill">Figma</span><span class="skill-pill">Color Theory</span></div></div>
-    <div class="skill-cat reveal">💻 Frontend<div class="skill-pills"><span class="skill-pill">HTML5</span><span class="skill-pill">JavaScript</span><span class="skill-pill">Tailwind</span></div></div>
-  </div>
-</section>
-
-<section id="projects">
-  <div class="sec-label">Work</div>
-  <h2 class="sec-title reveal">Things I've built.</h2>
-  <div class="project-grid">
-    <div class="project-card reveal"><div class="project-thumb">🏫</div><div class="project-body"><h3>Anand Marga School</h3><p>Fully responsive school website.</p></div></div>
-    <div class="project-card reveal"><div class="project-thumb">🎨</div><div class="project-body"><h3>Portfolio</h3><p>Custom aesthetic website.</p></div></div>
-  </div>
-</section>
-
-<section id="contact" style="background: var(--surface);">
-  <div class="sec-label">Contact</div>
-  <div class="contact-grid">
-    <div class="reveal">
-      <h2>Let's build<br>together.</h2>
-      <p>Email: kumarisangita7041@gmail.com</p>
-    </div>
-    <div class="form-box reveal">
-      <form id="contact-form">
-        <div class="fg"><label>Name</label><input type="text" name="from_name" required/></div>
-        <div class="fg"><label>Email</label><input type="email" name="from_email" required/></div>
-        <div class="fg"><label>Message</label><textarea name="message" required></textarea></div>
-        <button type="submit" class="btn-send" id="btn-text">Send Message ✦</button>
-      </form>
+<section id="about" style="background:var(--surface);">
+  <div class="reveal">
+    <h2 class="sec-title">Passionate about<br>pixels & clean code.</h2>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:3rem;">
+      <div>
+        <p style="color:var(--muted); line-height:1.9; margin-bottom:1rem;">
+          Hey! I'm <strong>Aryan Kumar</strong>, a self-driven web developer and designer based in <strong>Narela, Delhi</strong>. I started my journey out of pure curiosity — wanting to understand how websites are built.
+        </p>
+        <p style="color:var(--muted); line-height:1.9;">
+          I specialize in building responsive, visually stunning websites that load fast and feel great to use. Every project I take on gets my full attention.
+        </p>
+      </div>
+      <div style="background:var(--card); padding:2rem; border-radius:20px; border:1px solid var(--border);">
+        <h4 style="margin-bottom:1rem; color:var(--a1);">My Goals</h4>
+        <p style="font-size:0.9rem; color:var(--muted);">Currently mastering JavaScript and pushing my UI/UX skills to become a top-tier full-stack developer.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<footer><p>© 2026 Aryan Kumar · Built with ❤️ in Delhi</p></footer>
+<section id="skills">
+  <div class="reveal">
+    <h2 class="sec-title">What I bring<br>to the table.</h2>
+    <div style="display:flex; flex-wrap:wrap; gap:1rem;">
+      <span style="padding:0.6rem 1.2rem; background:var(--card); border:1px solid var(--border); border-radius:50px;">HTML5/CSS3</span>
+      <span style="padding:0.6rem 1.2rem; background:var(--card); border:1px solid var(--border); border-radius:50px;">JavaScript</span>
+      <span style="padding:0.6rem 1.2rem; background:var(--card); border:1px solid var(--border); border-radius:50px;">UI/UX Design</span>
+      <span style="padding:0.6rem 1.2rem; background:var(--card); border:1px solid var(--border); border-radius:50px;">Tailwind CSS</span>
+      <span style="padding:0.6rem 1.2rem; background:var(--card); border:1px solid var(--border); border-radius:50px;">Figma</span>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="background:var(--surface);">
+  <div class="reveal">
+    <h2 class="sec-title">Let's build together.</h2>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:2rem;">
+      <div style="background:var(--card); padding:2rem; border-radius:24px; border:1px solid var(--border);">
+        <form id="contact-form">
+          <input type="text" name="from_name" placeholder="Your Name" required style="width:100%; padding:1rem; margin-bottom:1rem; background:var(--bg); border:1px solid var(--border); border-radius:10px; color:#fff;">
+          <input type="email" name="from_email" placeholder="Your Email" required style="width:100%; padding:1rem; margin-bottom:1rem; background:var(--bg); border:1px solid var(--border); border-radius:10px; color:#fff;">
+          <textarea name="message" placeholder="Project details..." required style="width:100%; padding:1rem; margin-bottom:1rem; background:var(--bg); border:1px solid var(--border); border-radius:10px; color:#fff; height:120px;"></textarea>
+          <button type="submit" id="btn-text" class="btn-main" style="width:100%; border:none; cursor:pointer;">Send Message ✦</button>
+        </form>
+      </div>
+      <div style="padding:1rem;">
+        <p style="color:var(--muted); margin-bottom:1rem;">Email: kumarisangita7041@gmail.com</p>
+        <p style="color:var(--muted);">Location: Delhi, India</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><p style="text-align:center; padding:2rem; color:var(--muted); font-size:0.8rem;">© 2026 Aryan Kumar · Built with ❤️</p></footer>
 
 <script>
   function toggleTheme() {
@@ -238,9 +196,8 @@
 
   const words = ['Beautiful Websites.', 'Stunning UI/UX.', 'Clean Code.'];
   let wi=0, ci=0, deleting=false;
-  const typed = document.getElementById('typed');
   function type() {
-    const word = words[wi];
+    const word = words[wi], typed = document.getElementById('typed');
     if (!deleting) { typed.textContent = word.slice(0, ++ci); if (ci === word.length) { deleting = true; setTimeout(type, 1800); return; }
     } else { typed.textContent = word.slice(0, --ci); if (ci === 0) { deleting = false; wi = (wi+1) % words.length; } }
     setTimeout(type, deleting ? 50 : 100);
