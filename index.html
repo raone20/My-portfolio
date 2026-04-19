@@ -103,7 +103,6 @@
     }
     .theme-btn:hover { border-color: var(--accent); color: var(--accent); }
 
-    /* mobile nav — hide links, show hamburger feel */
     @media (max-width: 640px) {
       .nav-links { display: none; }
       nav { padding: 0.9rem 5%; }
@@ -120,7 +119,6 @@
       position: relative; overflow: hidden;
     }
 
-    /* mesh gradient bg */
     .hero-mesh {
       position: absolute; inset: 0; z-index: 0;
       background:
@@ -134,7 +132,6 @@
         radial-gradient(ellipse 60% 50% at 90% 80%, rgba(160,57,13,0.05) 0%, transparent 60%);
     }
 
-    /* subtle dot grid */
     .hero-dots {
       position: absolute; inset: 0; z-index: 0;
       background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
@@ -234,7 +231,6 @@
     }
     .soc-btn:hover { border-color: var(--accent); transform: translateY(-3px); background: var(--card2); }
 
-    /* floating stats */
     .hero-stats {
       display: flex; gap: 1.5rem; margin-top: 3rem;
       animation: fadeSlide 0.6s 0.6s ease both;
@@ -271,7 +267,6 @@
     }
     .sec-heading em { font-style: italic; color: var(--accent); }
 
-    /* reveal */
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
     .reveal.on { opacity: 1; transform: translateY(0); }
     .d1{transition-delay:0.1s} .d2{transition-delay:0.2s} .d3{transition-delay:0.3s}
@@ -879,7 +874,6 @@
   });
 
   // ══ ARYVOID CHATBOT ══
-
   const AV_SYSTEM = `You are Aryvoid, the personal AI assistant of Aryan Kumar — a self-taught Web Developer and UI/UX Designer from Narela, Delhi, India.
 
 Your personality: Friendly, helpful, enthusiastic. Mix English with natural Hinglish. Keep responses concise. Use emojis naturally. Be confident about Aryan's work.
@@ -959,17 +953,10 @@ Rules: Only answer about Aryan, his work, services, web dev, design, or tech. Po
     const btn=document.getElementById('avSendBtn');
     btn.disabled=true; avShowTyping();
     try{
-const res = await fetch('/api/chat',{
-  method:'POST',
-  headers:{
-    'Content-Type':'application/json'
-  },
+      const res=await fetch('/api/chat',{
         method:'POST',
         headers:{
-          'Content-Type':'application/json',
-          'x-api-key':AV_KEY,
-          'anthropic-version':'2023-06-01',
-          'anthropic-dangerous-direct-browser-access':'true'
+          'Content-Type':'application/json'
         },
         body:JSON.stringify({
           model:'claude-sonnet-4-20250514',
