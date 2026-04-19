@@ -959,7 +959,11 @@ Rules: Only answer about Aryan, his work, services, web dev, design, or tech. Po
     const btn=document.getElementById('avSendBtn');
     btn.disabled=true; avShowTyping();
     try{
-      const res=await fetch('https://api.anthropic.com/v1/messages',{
+const res = await fetch('/api/chat',{
+  method:'POST',
+  headers:{
+    'Content-Type':'application/json'
+  },
         method:'POST',
         headers:{
           'Content-Type':'application/json',
